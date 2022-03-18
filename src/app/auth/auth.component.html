@@ -1,0 +1,134 @@
+<div class="d-flex justify-content-center align-items-center mainContainer" [style.background-color]="isLoading ? 'white' : '#4169e1'" >
+    <img *ngIf="!isLoading" src="../../assets/logo-login.png" alt="">
+
+    <div class="auth-container" *ngIf="!isLoading">
+      <div class="alert alert-danger" *ngIf="error">
+        <p>{{ error }}</p>
+      </div>
+
+      <form *ngIf="!isSignUpMode" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill">
+          <mat-label>Username</mat-label>
+          <input
+            matInput
+            type="text"
+            name="username"
+            id="username"
+            formControlName="username"
+          />
+          <mat-error *ngIf="loginForm.invalid">
+            {{ getUsernameErrorMessage() }}</mat-error
+          >
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            type="password"
+            id="password"
+            name="password"
+            formControlName="password"
+          />
+          <mat-error *ngIf="loginForm.invalid">
+            {{ getPasswordErrorMessage() }}</mat-error
+          >
+        </mat-form-field>
+        <br />
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="loginForm.invalid"
+          class="mb-3"
+        >
+          Accedi
+        </button>
+      </form>
+
+      <form *ngIf="isSignUpMode" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill">
+          <mat-label>Username</mat-label>
+          <input
+            matInput
+            name="username"
+            id="username"
+            formControlName="username"
+          />
+          <mat-error *ngIf="signupForm.invalid">
+            {{ getUsernameErrorMessage() }}
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="fill">
+          <mat-label>Tipo Utente</mat-label>
+          <mat-select matInput name="level" id="level" formControlName="role">
+            <mat-option *ngFor="let level of role" [value]="level.value">
+              {{ level.viewValue }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="signupForm.invalid">
+            {{ getTypeErrorMessage() }}
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            type="email"
+            name="email"
+            id="email"
+            placeholder="pat@example.com"
+            formControlName="email"
+          />
+          <mat-error *ngIf="signupForm.invalid">
+            {{ getEmailErrorMessage() }}
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            type="password"
+            id="password"
+            name="password"
+            formControlName="password"
+          />
+          <mat-error *ngIf="signupForm.invalid">
+            {{ getPasswordErrorMessage() }}
+          </mat-error>
+        </mat-form-field>
+        <br />
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="signupForm.invalid"
+          class="mb-3"
+        >
+          Registrati
+        </button>
+      </form>
+
+      <p class="mb-3">oppure</p>
+      <a
+        *ngIf="!isSignUpMode"
+        href="javascript:void(0)"
+        (click)="switchAuthMode()"
+        >Registrati</a
+      >
+      <a
+        *ngIf="isSignUpMode"
+        href="javascript:void(0)"
+        (click)="switchAuthMode()"
+        >Accedi</a
+      >
+    </div>
+
+
+
+  <app-spinner *ngIf="isLoading"></app-spinner>
+</div>

@@ -1,0 +1,36 @@
+mat-form-field {
+  margin: 0 30px;
+  min-width: 250px;
+  width: 45%;
+  max-width: 700px;
+}
+h3,hr{
+  margin-bottom: 1.5rem;
+}
+
+button{
+  width: 100%;
+  line-height: 3.5;
+  margin-bottom: 2em;
+}
+
+.salvaBtn {
+  background-color: #4169e1!important;
+  color:white!important;
+}
+
+.salvaBtn:hover{
+  background-color: #ffca4b!important;
+  color:#4169e1!important;
+}
+
+.annullaBtn:hover{
+  background-color: #4169e1!important;
+  color: #ffca4b!important;
+}
+
+
+a:hover {
+  color: #ffca4b!important;
+
+}

@@ -1,0 +1,24 @@
+<div class="container" *ngIf="!showTable">
+  <mat-card class="example-card text-center p-4 mx-auto mt-5">
+    <div class="fa-solid fa-circle-user"></div>
+    <mat-card-content class="mt-3">
+      <h3><b>Username</b>: {{ user.username }}</h3>
+      <h3><b>ID</b>: {{ user.id }}</h3>
+      <h3><b>Email</b>: {{ user.email }}</h3>
+      <h3>
+        <b>Tipo Utente</b>:
+        <span *ngFor="let role of user.roles">{{ role }}</span>
+      </h3>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+      mat-flat-button
+      [disabled]="!admin"
+      routerLink="/user/users"
+    >
+    <i class="fa-solid fa-user-group fs-4 me-1"></i>
+      Mostra elenco utenti
+    </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

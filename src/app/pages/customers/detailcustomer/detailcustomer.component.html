@@ -1,0 +1,180 @@
+<div class="container w-75 pt-4" *ngIf="!isLoading">
+  <a routerLink="/customers"><i class="fa-solid fa-arrow-left fs-4"></i></a>
+  <h1 class="fw-bold text-center">
+    Dettagli Cliente: {{ customerDetails.ragioneSociale }}
+  </h1>
+  <div class="d-flex">
+    <div class="col-3 pe-4">
+      <button
+        mat-raised-button
+        class="w-100 mb-3 py-1"
+        routerLink="../../../customerbills/{{ customerDetails.id }}"
+      >
+        <i class="fa-solid fa-file-lines fs-4 me-1"></i> Fatture Cliente
+      </button>
+      <br />
+
+      <button
+        mat-raised-button
+        class="w-100 mb-3 py-1"
+        routerLink="../../editCustomer/{{ customerDetails.id }}"
+        [disabled]="!admin"
+      >
+        <i class="fa-solid fa-pencil fs-4 me-1"></i> Modifica Cliente
+      </button>
+    </div>
+    <div class="col-9">
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="fw-bold">
+              Informazioni Aziendali
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="mt-3">
+            <p>
+              <span class="fw-bold">Ragione Sociale: </span>
+              {{ customerDetails.ragioneSociale }}
+            </p>
+            <br />
+            <p>
+              <span class="fw-bold">Partita Iva: </span>
+              {{ customerDetails.partitaIva }}
+            </p>
+            <br />
+            <p>
+              <span class="fw-bold">Tipo Cliente: </span>
+              {{ customerDetails.tipoCliente }}
+            </p>
+            <br />
+            <p>
+              <span class="fw-bold">Email: </span>
+              {{ customerDetails.email ? customerDetails.email : 'n.d.' }}
+            </p>
+            <br />
+            <p>
+              <span class="fw-bold">PEC: </span>
+              {{ customerDetails.pec ? customerDetails.pec : 'n.d.'  }}
+            </p>
+            <br />
+            <p>
+              <span class="fw-bold">Telefono: </span>
+              {{ customerDetails.telefono ? customerDetails.telefono : 'n.d.'  }}
+            </p>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="fw-bold">
+              Contatto Aziendale
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="mt-3">
+            <p>
+              <span class="fw-bold">Nome: </span>
+              {{ customerDetails.nomeContatto ? customerDetails.nomeContatto : 'n.d.' }}
+            </p>
+            <br />
+            <p>
+              <span class="fw-bold">Cognome: </span>
+              {{ customerDetails.cognomeContatto ? customerDetails.cognomeContatto : 'n.d.' }}
+            </p>
+            <br />
+            <p>
+              <span class="fw-bold">Telefono: </span>
+              {{ customerDetails.telefonoContatto ? customerDetails.telefonoContatto : 'n.d.' }}
+            </p>
+            <br />
+            <p>
+              <span class="fw-bold">Email: </span>
+              {{ customerDetails.emailContatto }}
+            </p>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="fw-bold">
+              Indirizzo Sede Operativa
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="mt-3">
+            <p>
+              <span class="fw-bold">Via: </span>
+              {{ customerDetails.indirizzoSedeOperativa.via ? customerDetails.indirizzoSedeOperativa.via : 'n.d.'  }}
+            </p>
+            <br />
+            <p>
+              <span class="fw-bold">Civico: </span>
+              {{ customerDetails.indirizzoSedeOperativa.civico ? customerDetails.indirizzoSedeOperativa.civico : 'n.d.'  }}
+            </p>
+            <br />
+            <p>
+              <span class="fw-bold">CAP: </span>
+              {{ customerDetails.indirizzoSedeOperativa.cap ? customerDetails.indirizzoSedeOperativa.cap : 'n.d.'  }}
+            </p>
+            <br />
+            <p>
+              <span class="fw-bold">Località: </span>
+              {{ customerDetails.indirizzoSedeOperativa.localita ? customerDetails.indirizzoSedeOperativa.localita : 'n.d.' }}
+            </p>
+            <br />
+            <p>
+              <span class="fw-bold">Provincia: </span>
+              {{ customerDetails.indirizzoSedeOperativa.comune.provincia.nome }}
+            </p>
+            <br />
+            <p>
+              <span class="fw-bold">Comune: </span>
+              {{ customerDetails.indirizzoSedeOperativa.comune.nome }}
+            </p>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="fw-bold">
+              Indirizzo Sede Legale
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="mt-3">
+            <p>
+              <span class="fw-bold">Via: </span>
+              {{ customerDetails.indirizzoSedeLegale.via ? customerDetails.indirizzoSedeLegale.via : 'n.d.' }}
+            </p>
+            <br />
+            <p>
+              <span class="fw-bold">Civico: </span>
+              {{ customerDetails.indirizzoSedeLegale.civico ? customerDetails.indirizzoSedeLegale.civico : 'n.d.' }}
+            </p>
+            <br />
+            <p>
+              <span class="fw-bold">CAP: </span>
+              {{ customerDetails.indirizzoSedeLegale.cap ? customerDetails.indirizzoSedeLegale.cap : 'n.d.' }}
+            </p>
+            <br />
+            <p>
+              <span class="fw-bold">Località: </span>
+              {{ customerDetails.indirizzoSedeLegale.localita ? customerDetails.indirizzoSedeLegale.localita : 'n.d.' }}
+            </p>
+            <br />
+            <p>
+              <span class="fw-bold">Provincia: </span>
+              {{ customerDetails.indirizzoSedeLegale.comune.provincia.nome }}
+            </p>
+            <br />
+            <p>
+              <span class="fw-bold">Comune: </span>
+              {{ customerDetails.indirizzoSedeLegale.comune.nome }}
+            </p>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+</div>
+
+<div
+  class="d-flex justify-content-center align-items-center h-75"
+  *ngIf="isLoading"
+>
+  <app-spinner></app-spinner>
+</div>

@@ -1,0 +1,132 @@
+<div class="container w-75 pt-4 text-center position-relative" *ngIf="!isLoading">
+  <form [formGroup]="billForm" (ngSubmit)="onSubmit()">
+    <a routerLink="/bills" class="position-absolute start-0"><i class="fa-solid fa-arrow-left fs-4"></i></a>
+    <h2 *ngIf="!billId">Aggiungi Fattura</h2>
+    <h2 *ngIf="billId">Modifica Fattura</h2>
+
+    <div class="d-flex flex-wrap justify-content-center">
+      <mat-form-field appearance="outline">
+        <mat-label>Cliente</mat-label>
+        <mat-select
+          matInput
+          type="text"
+          name="cliente"
+          id="cliente"
+          formControlName="cliente"
+        >
+          <mat-option *ngFor="let customer of customers" value="{{ customer.id }}">{{
+            customer.ragioneSociale
+          }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="billForm.invalid">{{ getErrCliente() }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Importo</mat-label>
+        <input
+          matInput
+          type="number"
+          name="importo"
+          id="importo"
+          formControlName="importo"
+        />
+        <mat-error *ngIf="billForm.invalid">{{ getErrImporto() }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Stato</mat-label>
+        <mat-select
+          matInput
+          type="text"
+          name="stato"
+          id="stato"
+          formControlName="stato"
+        >
+          <mat-option value="1">PAGATA</mat-option>
+          <mat-option value="2">NON PAGATA</mat-option>
+        </mat-select>
+        <mat-error *ngIf="billForm.invalid">{{ getErrStato() }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Numero</mat-label>
+        <input
+          matInput
+          type="number"
+          name="numero"
+          id="numero"
+          formControlName="numero"
+        />
+        <mat-error *ngIf="billForm.invalid">{{ getErrNumero() }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Data</mat-label>
+        <input
+          matInput
+          type="date"
+          name="data"
+          id="data"
+          formControlName="data"
+          max="2023-12-31"
+          min="2019-01-01"
+
+        />
+        <mat-error *ngIf="billForm.invalid">{{ getErrData() }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Anno</mat-label>
+        <input
+          matInput
+          type="number"
+          name="anno"
+          id="anno"
+          formControlName="anno"
+          max="2023"
+          min="2019"
+        />
+        <mat-error *ngIf="billForm.invalid">{{ getErrAnno() }}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <hr />
+
+    <div>
+      <button
+        mat-raised-button
+        class="w-25 mx-3 salvaBtn"
+        color="primary"
+        *ngIf="!billId"
+        [disabled]="billForm.invalid"
+      >
+      <i class="fa-solid fa-file-circle-plus fs-4 me-1"></i>
+      Aggiungi Fattura
+      </button>
+      <button
+        mat-raised-button
+        class="w-25 mx-3 salvaBtn"
+        color="primary"
+        *ngIf="billId"
+        [disabled]="billForm.invalid"
+      >
+      <i class="fa-solid fa-floppy-disk fs-4 me-1"></i>
+      Salva Modifiche
+      </button>
+      <button
+        mat-raised-button
+        class="w-25 mx-3 annullaBtn"
+        routerLink="/bills"
+      >
+        Annulla
+      </button>
+    </div>
+  </form>
+</div>
+
+<div
+  class="d-flex justify-content-center align-items-center h-75"
+  *ngIf="isLoading"
+>
+  <app-spinner></app-spinner>
+</div>

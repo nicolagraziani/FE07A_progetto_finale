@@ -1,0 +1,33 @@
+.example-card {
+  max-width: 400px;
+}
+
+.fa-circle-user {
+  font-size: 6em;
+}
+
+app-userstable {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  z-index: 10;
+  top: 64px;
+}
+
+button {
+  width: 100%;
+  line-height: 3.5;
+  margin-bottom: 2em;
+  background-color: #4169e1 !important;
+  color: white;
+}
+
+button:hover {
+  color: #4169e1 !important;
+  background-color: #ffca4b !important;
+}
+
+button:disabled {
+  background-color: #c6dff3 !important;
+  color: #a2c4e0 !important;
+}

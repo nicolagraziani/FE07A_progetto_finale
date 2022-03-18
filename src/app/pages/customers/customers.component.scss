@@ -1,0 +1,52 @@
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+mat-paginator  {
+  width: 100%;
+}
+
+i {
+  color: #4169e1 !important;
+}
+
+.add-client {
+  position: relative;
+  right: 8%;
+  background-color: #4169e1;
+  i {
+    color: white !important;
+  }
+}
+.add-client:hover {
+  background-color: #ffca4b !important;
+
+  i {
+    color: #4169e1 !important;
+  }
+}
+.add-client:disabled{
+  background-color: #c6dff3!important;
+  i {
+    color: #a2c4e0!important;
+  }
+}
+
+i:hover {
+  color: #ffca4b !important;
+}
+
+button:disabled {
+  i {
+    color: #a2c4e0 !important;
+  }
+}
+
+.fa-trash-can:hover {
+  color: #df265e !important;
+}

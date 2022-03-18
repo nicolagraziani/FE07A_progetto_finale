@@ -1,0 +1,50 @@
+.mainContainer {
+  height: 100vh;
+  background-color: #4169e1;
+}
+
+.auth-container {
+  display: inline-block;
+  padding: 1.5rem;
+  border-radius: 7px;
+  text-align: center;
+  background-color: white;
+}
+.spinnerContainer{
+  background-color: white;
+  width: 100vh;
+  height: 100vw;
+}
+
+mat-form-field {
+  margin-bottom: 0.5rem;
+  width: 33vw;
+}
+a {
+  color: #4169e1;
+}
+a:hover {
+  color: #ffca4b;
+}
+
+button {
+  width: 100%;
+  line-height: 3.5;
+  background-color: #4169e1!important;
+  color:white;
+}
+
+button:hover{
+  background-color: #ffca4b!important;
+  color:#4169e1
+}
+
+button:disabled{
+  background-color: #A2C4E0!important;
+}
+
+img {
+  width: 10em;
+  position: absolute;
+  top: 2.5em
+}

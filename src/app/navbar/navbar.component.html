@@ -1,0 +1,14 @@
+<mat-toolbar *ngIf="userLogged">
+  <div class="container d-flex justify-content-between align-content-center">
+    <div >
+      <img src="../../assets/logo-login.png" alt="logo">
+      <a routerLink="customers" class="me-5"><i class="fa-solid fa-people-group me-2"></i>Clienti</a>
+      <a routerLink="bills" class="me-5"><i class="fa-solid fa-file-invoice me-2"></i>Fatture</a>
+      <a routerLink="user" class="me-5"><i class="fa-solid fa-user me-2"></i>Utente</a>
+    </div>
+    <div class="align-self-center">
+      <a class="exit" href="javascript:void(0)" (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i></a>
+    </div>
+  </div>
+
+</mat-toolbar>
